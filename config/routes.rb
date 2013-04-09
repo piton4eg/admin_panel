@@ -1,5 +1,5 @@
 AdminPanel::Application.routes.draw do
   resources :sprints
 
-  root to: "sprints#indexo"
+  root to: "sprints#index"
 end
