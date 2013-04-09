@@ -26,6 +26,7 @@ class SprintsController < ApplicationController
   		fact_points += swh.fact_points
   		hours += swh.hours_count  		
   	end
+    
     @velocity = 0
   	if hours > 0
       @velocity = (fact_points / hours).round(2)
