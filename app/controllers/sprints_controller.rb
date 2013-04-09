@@ -14,7 +14,7 @@ class SprintsController < ApplicationController
   		flash[:success] = "Новый спринт успешно сохранен!"
   		redirect_to @sprint
   	else
-  		render 'new'  		
+  		redirect_to new_sprint_path
   	end
   end
 
@@ -26,7 +26,7 @@ class SprintsController < ApplicationController
   		fact_points += swh.fact_points
   		hours += swh.hours_count  		
   	end
-    
+
   	if hours > 0
       @velocity = (fact_points / hours).round(2)
     end
