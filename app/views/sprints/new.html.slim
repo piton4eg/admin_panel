@@ -1,2 +1,32 @@
 h1 Создание нового спринта
-p Text text text
+
+div class="row"
+ div class="span6 offset3"
+  = form_for(@sprint) do |f|
+   = render "shared/error_messages"
+
+   = f.label :name, "Наименование"
+   = f.text_field :name, placeholder: "Наименование спринта"
+
+   = f.label :points, "Сложность"
+   = f.text_field :points, placeholder: "Сложность спринта (число)"
+
+   = f.label :unknown_level, "Непонятные задания"
+   = f.text_field :unknown_level, placeholder: "Количество заданий со сложностью '?'"
+
+   = f.label :fact_points, "Итоговая реализация"
+   = f.text_field :fact_points, value: 0
+
+   = f.label :hours_count, "Количество чел/ч"
+   = f.text_field :hours_count, value: 0
+
+   = f.label :status, "Статус"
+   = f.select :status, options_for_select(["Планируемый", "Идет", "Успешно", "Провалено"])
+
+   = f.label :date_begin, "Дата начала"
+   = f.text_field :date_begin, value: Date.today()
+
+   = f.label :date_end, "Дата окончания"
+   = f.text_field :date_end, value: Date.today() + 14.day
+
+   = f.submit "Добавить спринт", class: "btn btn-primary"

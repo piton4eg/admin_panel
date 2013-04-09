@@ -1,10 +1,9 @@
 # coding: utf-8
 require 'spec_helper'
 
-describe Sprint do
-  before { @sprint = Sprint.new( name: "Новый спринт", points: 100, unknown_level: 10, 
-  	fact_points: 0, hours_count: 0, status: "Планируется", date_begin: '01.01.2013', date_end: '31.01.2013') }
-  subject { @sprint }
+describe "sprint model" do
+  let (:sprint) { FactoryGirl.create(:sprint) }
+  subject { sprint }
 
   it { should respond_to(:name) }
   it { should respond_to(:points) }
@@ -16,12 +15,20 @@ describe Sprint do
   it { should respond_to(:date_begin) }
 
   it { should be_valid }
+
   describe "name is blank" do
-  	before { @sprint.name = '' }
+  	before { sprint.name = '' }
   	it { should_not be_valid }
   end
   describe "name is too long" do
-  	before { @sprint.name = 'a' * 51 }
+  	before { sprint.name = 'a' * 51 }
   	it { should_not be_valid }
+  end
+  describe "date end less then date begin" do
+    before do
+      sprint.date_begin = '02.01.2013'
+      sprint.date_end = '01.01.2013'
+    end
+    it { should_not be_valid }
   end
 end
