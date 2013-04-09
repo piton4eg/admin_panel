@@ -18,7 +18,7 @@ class SprintsController < ApplicationController
   	end
   end
 
-  def index
+  def indexo
   	@sprints = Sprint.all
   	sprints_with_hours = Sprint.find(:all, :conditions => ["hours_count > '0' AND status <> 'Планируемый'"])
   	fact_points = hours = 0
