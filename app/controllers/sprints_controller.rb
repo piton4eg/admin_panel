@@ -20,7 +20,7 @@ class SprintsController < ApplicationController
 
   def index
   	@sprints = Sprint.all
-  	sprints_with_hours = Sprint.find(:all, :conditions => ["hours_count > ? AND status <> ?", 0, 'Планируемый'])
+  	sprints_with_hours = Sprint.find(:all, :conditions => ["hours_count > '0' AND status <> 'Планируемый'"])
   	fact_points = hours = 0
   	sprints_with_hours.each do |swh|
   		fact_points += swh.fact_points
