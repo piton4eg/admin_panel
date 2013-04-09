@@ -18,7 +18,7 @@ class SprintsController < ApplicationController
   	end
   end
 
-  def index
+  def index    
   	@sprints = Sprint.all
   	sprints_with_hours = Sprint.find(:all)
   	fact_points = hours = 0
@@ -26,6 +26,7 @@ class SprintsController < ApplicationController
   		fact_points += swh.fact_points
   		hours += swh.hours_count  		
   	end
+    
   	if hours > 0
       @velocity = (fact_points / hours).round(2)
     end
