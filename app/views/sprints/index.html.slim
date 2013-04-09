@@ -1,0 +1,27 @@
+h1 Список спринтов
+
+ul class="thumbnails"
+  - @sprints.each do |one_sprint|
+    li class="span4"
+      div
+	    = link_to one_sprint.name, sprint_path(one_sprint)
+	    div class="well"	      
+	       b Продолжительность:
+	       #{(one_sprint.date_end - one_sprint.date_begin).to_int/(1.day)} д.:
+	        (c #{one_sprint.date_begin.to_date} по #{one_sprint.date_end.to_date})
+	       b Сложность: 
+	       #{one_sprint.points.to_int}
+	       - if one_sprint.unknown_level > 0
+	        b Кол-во непонятных вопросов: 
+	        #{one_sprint.unknown_level.to_int}
+	       b Итоговая реализация: 
+	       #{one_sprint.fact_points}
+	       b Статус: 
+	       #{one_sprint.status}
+	       b Количество чел/ч: 
+	       #{one_sprint.hours_count}
+
+h1 Статистика
+div class="span6 offset3"
+  p Средняя скорость: #{@velocity}
+  p Предполагаемое кол-во поинтов: #{@probable_points}

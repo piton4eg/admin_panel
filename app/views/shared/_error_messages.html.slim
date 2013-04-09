@@ -1,0 +1,7 @@
+- if @sprint.errors.any?
+  div id="error_explanation"
+    div class="alert alert-error" 
+      | Форма содержит ошибки
+    ul
+      - @sprint.errors.full_messages.each do |msg|
+        li #{msg}

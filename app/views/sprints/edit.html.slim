@@ -1,0 +1,32 @@
+h1 Редактирование спринта
+
+div class="row"
+ div class="span6 offset3"
+  = form_for(@sprint) do |f|
+   = render "shared/error_messages"
+
+   = f.label :name, "Наименование"
+   = f.text_field :name
+
+   = f.label :points, "Сложность"
+   = f.text_field :points
+
+   = f.label :unknown_level, "Непонятные задания"
+   = f.text_field :unknown_level
+
+   = f.label :fact_points, "Итоговая реализация"
+   = f.text_field :fact_points
+
+   = f.label :hours_count, "Количество чел/ч"
+   = f.text_field :hours_count
+
+   = f.label :status, "Статус"
+   = f.select :status, options_for_select(["Планируемый", "Идет", "Успешно", "Провалено"], @sprint.status)
+
+   = f.label :date_begin, "Дата начала"
+   = f.text_field :date_begin, value: @sprint.date_begin.to_date
+
+   = f.label :date_end, "Дата окончания"
+   = f.text_field :date_end, value: @sprint.date_end.to_date
+
+   = f.submit "Применить", class: "btn btn-primary"

@@ -1,0 +1,21 @@
+h1 = @sprint.name
+
+div class="row"
+ div class="span6 offset3"
+  div class="well"
+    b Продолжительность:
+    #{(@sprint.date_end - @sprint.date_begin).to_int/(1.day)} д.:
+      (c #{@sprint.date_begin.to_date} по #{@sprint.date_end.to_date})
+    b Сложность:
+    #{@sprint.points.to_int}
+    - if @sprint.unknown_level > 0
+    	b Кол-во непонятных вопросов:
+    	#{@sprint.unknown_level.to_int}
+    b Итоговая реализация:
+    #{@sprint.fact_points}
+    b Статус:
+    #{@sprint.status}
+    b Количество чел/ч:
+    #{@sprint.hours_count}
+
+  a href=edit_sprint_path(@sprint) class="btn btn-primary" Редактировать

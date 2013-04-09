@@ -1,0 +1,14 @@
+ru: 
+  activerecord: 
+    attributes: 
+      sprint: 
+        date_begin: "Дата начала"
+        date_end: "Дата окончания"
+        fact_points: "Итоговая реализация"
+        hours_count: "Количество чел/ч"
+        name: Наименование
+        points: Сложность
+        status: Статус
+        unknown_level: "Непонятные задания"
+    models: 
+      sprint: Спринт
