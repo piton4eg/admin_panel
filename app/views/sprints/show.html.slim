@@ -18,4 +18,6 @@ div class="row"
     b Количество чел/ч:
     #{@sprint.hours_count}
 
-  a href=edit_sprint_path(@sprint) class="btn btn-primary" Редактировать
+  a href=edit_sprint_path(@sprint) class="btn btn-primary" Редактировать 
+  '
+  = link_to "Удалить", sprint_path(@sprint), method: :delete, data: { confirm: "Вы уверены?" }, class: "btn btn-primary"

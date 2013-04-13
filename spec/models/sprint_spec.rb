@@ -26,8 +26,8 @@ describe "sprint model" do
   end
   describe "date end less then date begin" do
     before do
-      sprint.date_begin = '02.01.2013'
-      sprint.date_end = '01.01.2013'
+      sprint.date_begin = Date.today() + 1.day
+      sprint.date_end = Date.today()
     end
     it { should_not be_valid }
   end

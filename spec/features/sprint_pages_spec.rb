@@ -14,6 +14,17 @@ describe "Sprint pages" do
 		it { should have_link('Создать спринт', href: new_sprint_path) }		
 		it { should have_link('Спринты', href: root_path) }
 		it { should have_link('Редактировать', href: edit_sprint_path(sprint)) }			
+		it { should have_link('Удалить', href: sprint_path(sprint)) }
+
+		describe "delete sprint" do
+			it "should delete sprint" do
+				expect { click_link('Удалить') }.to change(Sprint, :count).by(-1)
+			end
+			describe "success text" do
+				before { click_link('Удалить') }
+				it { should have_selector('div.alert.alert-success', text: 'Спринт успешно удален') }
+			end
+		end
 	end
 
 	describe "add new sprint" do
@@ -70,7 +81,7 @@ describe "Sprint pages" do
 		it { should have_link('Создать спринт', href: new_sprint_path) }		
 		it { should have_link('Спринты', href: root_path) }
 		it { should have_button(apply) }	
-
+		
 		describe "with invalid info" do
 			before do
 				fill_in "Наименование", with: ""
@@ -108,4 +119,6 @@ describe "Sprint pages" do
 			it { should have_selector('p', text: "Предполагаемое кол-во поинтов: " + fact.round(2).to_s ) }
 		end
 	end
+
+
 end
