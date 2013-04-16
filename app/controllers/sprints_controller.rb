@@ -1,7 +1,7 @@
 # coding: utf-8
 class SprintsController < ApplicationController
   def new
-    @sprint = Sprint.new
+    @sprint = SprintDecorator.decorate(Sprint.new)
   end
 
   def show
