@@ -69,7 +69,7 @@ describe "Sprint pages" do
 		it { should have_selector('h1', text: edit_sprint) }
 		it { should have_link('Создать спринт', href: new_sprint_path) }		
 		it { should have_link('Спринты', href: root_path) }
-		it { should have_button(apply) }	
+		it { should have_button(apply) }			
 		
 		describe "with invalid info" do
 			before do
@@ -108,6 +108,4 @@ describe "Sprint pages" do
 			it { should have_selector('p', text: "Предполагаемое кол-во поинтов: " + fact.round(2).to_s ) }
 		end
 	end
-
-
 end

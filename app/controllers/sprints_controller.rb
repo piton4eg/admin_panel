@@ -9,7 +9,7 @@ class SprintsController < ApplicationController
   end
 
   def create
-    @sprint = Sprint.new(params[:sprint])
+    @sprint = SprintDecorator.decorate(Sprint.new(params[:sprint]))
     if @sprint.save
       flash[:success] = "Новый спринт успешно сохранен!"
       redirect_to @sprint
