@@ -21,6 +21,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'draper'
 
 group :test do
 	gem 'factory_girl_rails', '4.1.0'

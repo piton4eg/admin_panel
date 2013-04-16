@@ -5,7 +5,7 @@ class SprintsController < ApplicationController
   end
 
   def show
-    @sprint = Sprint.find(params[:id])    
+    @sprint = SprintDecorator.decorate(Sprint.where_id(params[:id]))
   end
 
   def create
@@ -19,30 +19,19 @@ class SprintsController < ApplicationController
   end
 
   def index    
-    @sprints = Sprint.all
-    sprints_with_hours = Sprint.with_hours
-    fact_points = hours = 0
-    sprints_with_hours.each do |swh|
-      fact_points += swh.fact_points
-      hours += swh.hours_count      
-    end
+    @sprints = SprintDecorator.decorate_collection(Sprint.all)
     
-    @velocity = 0
-    if hours > 0
-      @velocity = (fact_points / hours).round(2)
-    end
-    @probable_points = 0
-    if sprints_with_hours.count > 0
-      @probable_points = (@velocity * hours / sprints_with_hours.count).round(2)
-    end
+    stats = SprintStats.get_first
+    @velocity = stats.velocity
+    @probable_points = stats.points
   end
 
   def edit
-    @sprint = Sprint.find(params[:id])
+    @sprint = SprintDecorator.decorate(Sprint.where_id(params[:id]))
   end
 
   def update
-    @sprint = Sprint.find(params[:id])
+    @sprint = SprintDecorator.decorate(Sprint.where_id(params[:id]))
     if @sprint.update_attributes(params[:sprint])
       flash[:success] = 'Изменения сохранены'
       redirect_to root_path
@@ -52,7 +41,7 @@ class SprintsController < ApplicationController
   end
 
   def destroy
-    Sprint.find(params[:id]).destroy
+    SprintDecorator.decorate(Sprint.where_id(params[:id])).destroy
     flash[:success] = 'Спринт успешно удален'
     redirect_to root_path
   end

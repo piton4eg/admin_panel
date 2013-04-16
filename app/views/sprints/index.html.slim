@@ -1,25 +1,22 @@
 h1 Список спринтов
 
-ul class="thumbnails"
-  - @sprints.each do |one_sprint|
-    li class="span4"
-      div
-	    = link_to one_sprint.name, sprint_path(one_sprint)
-	    div class="well"	      
-	       b Продолжительность:
-	       #{(one_sprint.date_end - one_sprint.date_begin).to_int/(1.day)} д.:
-	        (c #{one_sprint.date_begin.to_date} по #{one_sprint.date_end.to_date})
-	       b Сложность: 
-	       #{one_sprint.points.to_int}
-	       - if one_sprint.unknown_level > 0
-	        b Кол-во непонятных вопросов: 
-	        #{one_sprint.unknown_level.to_int}
-	       b Итоговая реализация: 
-	       #{one_sprint.fact_points}
-	       b Статус: 
-	       #{one_sprint.status}
-	       b Количество чел/ч: 
-	       #{one_sprint.hours_count}
+div
+  table class="table table-bordered"
+    thead
+      tr      
+        th Наименование
+        th Продолжительность
+        th Итоговая реализация
+        th Количество чел/ч
+        th Статус      
+    tbody
+      - @sprints.each do |one_sprint|            
+        tr class=one_sprint.status_class
+          td = one_sprint.show_link
+          td #{one_sprint.duration}
+          td #{one_sprint.fact_points}
+          td #{one_sprint.hours_count}
+          td #{one_sprint.status}          
 
 h1 Статистика
 div class="span6 offset3"

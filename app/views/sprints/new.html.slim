@@ -1,24 +1,24 @@
 h1 Создание нового спринта
-
+ 
 div class="row"
  div class="span6 offset3"
   = form_for(@sprint) do |f|
    = render "shared/error_messages"
 
    = f.label :name, "Наименование"
-   = f.text_field :name, placeholder: "Наименование спринта"
+   = f.text_field :name
 
    = f.label :points, "Сложность"
-   = f.text_field :points, placeholder: "Сложность спринта (число)"
+   = f.text_field :points
 
    = f.label :unknown_level, "Непонятные задания"
-   = f.text_field :unknown_level, placeholder: "Количество заданий со сложностью '?'"
+   = f.text_field :unknown_level
 
    = f.label :fact_points, "Итоговая реализация"
-   = f.text_field :fact_points, value: 0
+   = f.text_field :fact_points
 
    = f.label :hours_count, "Количество чел/ч"
-   = f.text_field :hours_count, value: 0
+   = f.text_field :hours_count
 
    = f.label :status, "Статус"
    = f.select :status, options_for_select(["Планируемый", "Идет", "Успешно", "Провалено"])

@@ -35,18 +35,7 @@ describe "Sprint pages" do
 		it { should have_selector('h1', text: add_new_sprint) }
 		it { should have_link('Создать спринт', href: new_sprint_path) }		
 		it { should have_link('Спринты', href: root_path) }
-		it { should have_button(submit) }
-		
-		describe "with invalid info" do
-			it "should not add sprint" do
-				expect { click_button submit }.not_to change(Sprint, :count)
-			end
-
-			before { click_button submit }
-			it { should have_selector('h1', text: add_new_sprint) }
-			it { should have_selector('div.alert.alert-error', text: error_text) }
-		end
-		
+		it { should have_button(submit) }	
 
 		describe "with valid info" do
 			before do

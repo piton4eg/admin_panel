@@ -12,5 +12,12 @@ class Sprint < ActiveRecord::Base
   		!date_begin.blank? and !date_end.blank? and date_begin > date_end
   end
 
-  scope :with_hours, where("hours_count > '0' AND status <> 'Планируемый'")
+  scope :with_hours, where("hours_count > '0' AND status <> 'Планируемый'")  
+
+  after_save -> { SprintStats.update_stats }  
+  after_destroy -> { SprintStats.update_stats }
+
+  def self.where_id(id)
+    where(id: id).first
+  end
 end
