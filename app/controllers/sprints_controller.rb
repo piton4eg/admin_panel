@@ -1,7 +1,7 @@
 # coding: utf-8
 class SprintsController < ApplicationController
   def new
-    @sprint = SprintDecorator.decorate(Sprint.new)
+    @sprint = Sprint.new
   end
 
   def show
@@ -9,7 +9,7 @@ class SprintsController < ApplicationController
   end
 
   def create
-    @sprint = SprintDecorator.decorate(Sprint.new(params[:sprint]))
+    @sprint = Sprint.new(params[:sprint])
     if @sprint.save
       flash[:success] = "Новый спринт успешно сохранен!"
       redirect_to @sprint
@@ -27,11 +27,11 @@ class SprintsController < ApplicationController
   end
 
   def edit
-    @sprint = SprintDecorator.decorate(Sprint.where_id(params[:id]))
+    @sprint = Sprint.where_id(params[:id])
   end
 
   def update
-    @sprint = SprintDecorator.decorate(Sprint.where_id(params[:id]))
+    @sprint = Sprint.where_id(params[:id])
     if @sprint.update_attributes(params[:sprint])
       flash[:success] = 'Изменения сохранены'
       redirect_to root_path
