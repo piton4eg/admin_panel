@@ -4,7 +4,10 @@ class SprintStats < ActiveRecord::Base
   validates :velocity, :points, numericality: { greater_then_or_equal_to: 0 }
   
   def self.update_stats
-    fact_points = hours = velocity = probable_points = 0
+    fact_points = 0
+    hours = 0
+    velocity = 0
+    probable_points = 0
     
     stat = SprintStats.get_first
     sprints_with_hours = Sprint.with_hours

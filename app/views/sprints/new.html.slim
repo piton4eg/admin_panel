@@ -8,6 +8,12 @@ div class="row"
    = f.label :name, "Наименование"
    = f.text_field :name
 
+   = f.label :date_begin, "Дата начала"
+   = f.text_field :date_begin, value: Date.today(), "data-behaviour" => "datepicker"
+
+   = f.label :date_end, "Дата окончания"
+   = f.text_field :date_end, value: Date.today() + 14.day, "data-behaviour" => "datepicker"
+
    = f.label :points, "Сложность"
    = f.text_field :points
 
@@ -22,11 +28,5 @@ div class="row"
 
    = f.label :status, "Статус"
    = f.select :status, options_for_select(["Планируемый", "Идет", "Успешно", "Провалено"])
-
-   = f.label :date_begin, "Дата начала"
-   = f.text_field :date_begin, value: Date.today()
-
-   = f.label :date_end, "Дата окончания"
-   = f.text_field :date_end, value: Date.today() + 14.day
-
+   
    = f.submit "Добавить спринт", class: "btn btn-primary"

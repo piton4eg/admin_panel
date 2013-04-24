@@ -23,14 +23,11 @@ class SprintDecorator < Draper::Decorator
   end
 
   def status_class
-    if status == 'Успешно'
-      'info'
-    elsif status == 'Провалено'
-      'error'
-    elsif status == 'Идет'
-      'success'
-    else
-      'warning'
+    result = case status
+      when 'Успешно' then 'info'
+      when 'Провалено' then 'error'
+      when 'Идет' then 'success'
+      else 'warning'      
     end
   end
 end

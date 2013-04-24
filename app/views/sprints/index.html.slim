@@ -10,7 +10,7 @@ div
         th Количество чел/ч
         th Статус      
     tbody
-      - @sprints.each do |one_sprint|            
+      - @sprints.each do |one_sprint|                  
         tr class=one_sprint.status_class
           td = one_sprint.show_link
           td #{one_sprint.duration}
