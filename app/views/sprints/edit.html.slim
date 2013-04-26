@@ -9,10 +9,10 @@ div class="row"
    = f.text_field :name
 
    = f.label :date_begin, "Дата начала"
-   = f.text_field :date_begin, value: @sprint.date_begin.to_date, "data-behaviour" => "datepicker"
+   = f.text_field :date_begin, value: @sprint.begin_date, "data-behaviour" => "datepicker"
 
    = f.label :date_end, "Дата окончания"
-   = f.text_field :date_end, value: @sprint.date_end.to_date, "data-behaviour" => "datepicker"
+   = f.text_field :date_end, value: @sprint.end_date, "data-behaviour" => "datepicker"
 
    = f.label :points, "Сложность"
    = f.text_field :points

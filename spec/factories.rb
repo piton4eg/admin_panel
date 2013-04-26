@@ -11,4 +11,7 @@ FactoryGirl.define do
 		date_begin 		"01.01.2013"
 		date_end 		"31.01.2013"
 	end	
+
+	factory :sprint_stats do		
+	end
 end

@@ -27,11 +27,11 @@ class SprintsController < ApplicationController
   end
 
   def edit
-    @sprint = Sprint.where_id(params[:id])
+    @sprint = SprintDecorator.decorate(Sprint.where_id(params[:id]))
   end
 
   def update
-    @sprint = Sprint.where_id(params[:id])
+    @sprint = SprintDecorator.decorate(Sprint.where_id(params[:id]))
     if @sprint.update_attributes(params[:sprint])
       flash[:success] = 'Изменения сохранены'
       redirect_to root_path

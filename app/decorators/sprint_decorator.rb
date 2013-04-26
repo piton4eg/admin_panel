@@ -30,4 +30,12 @@ class SprintDecorator < Draper::Decorator
       else 'warning'      
     end
   end
+
+  def begin_date
+    model.date_begin.to_date if !model.date_begin.blank?    
+  end
+  def end_date
+    model.date_end.to_date if !model.date_end.blank?    
+  end
+
 end

@@ -12,3 +12,9 @@ ru:
         unknown_level: "Непонятные задания"
     models: 
       sprint: Спринт
+    errors:
+      models:
+        sprint:
+          attributes:
+            date_begin:
+              date_required: "не может быть больше даты окончания"

@@ -8,7 +8,7 @@ class Sprint < ActiveRecord::Base
   
   validate :date_begin_less_then_date_end
   def date_begin_less_then_date_end
-  	errors.add(:Дата_начала, "не может быть больше даты окончания") if 
+  	errors.add(:date_begin, :date_required) if 
   		!date_begin.blank? and !date_end.blank? and date_begin > date_end
   end
 
